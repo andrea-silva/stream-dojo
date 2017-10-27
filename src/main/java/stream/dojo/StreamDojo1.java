@@ -7,7 +7,7 @@ class StreamDojo1 {
      * find the least frequent character and its frequency. In case of a tie, return
      * the char that comes last in alphabet order
      */
-    CharFrequency findLeastFrequentLettersInDir(final String directoryPath) {
+    CharFrequency findLeastFrequentCharInDir(final String directoryPath) {
         return null;
     }
 

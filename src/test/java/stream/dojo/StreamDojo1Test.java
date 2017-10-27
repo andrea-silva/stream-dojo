@@ -11,6 +11,6 @@ class StreamDojo1Test {
     @Test
     void canDetermineCharWithLowestFrequencyInDir() {
         // WIP
-        assertNull(streamDojo1.findLeastFrequentLettersInDir("blah"));
+        assertNull(streamDojo1.findLeastFrequentCharInDir("blah"));
     }
 }
