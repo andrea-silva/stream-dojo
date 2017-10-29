@@ -2,6 +2,10 @@ package stream.dojo;
 
 import org.junit.jupiter.api.Test;
 
+import java.net.URI;
+import java.nio.file.Paths;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class StreamDojo1Test {
@@ -9,8 +13,19 @@ class StreamDojo1Test {
     private StreamDojo1 streamDojo1 = new StreamDojo1();
 
     @Test
-    void canDetermineCharWithLowestFrequencyInDir() {
-        // WIP
-        assertNull(streamDojo1.findLeastFrequentCharInDir("blah"));
+    void shouldFindThreeMostFrequentWords() throws Exception {
+        final URI uri = ClassLoader.getSystemResource("files").toURI();
+        final String mainPath = Paths.get(uri).toString();
+
+        final List<WordCount> wordsCounts = streamDojo1.findThreeMostFrequentWordsInDir(mainPath);
+
+        assertNotNull(wordsCounts);
+        assertEquals(3, wordsCounts.size());
+        assertEquals("the", wordsCounts.get(0).getWord());
+        assertEquals(Long.valueOf(44), wordsCounts.get(0).getCount());
+        assertEquals("you", wordsCounts.get(1).getWord());
+        assertEquals(Long.valueOf(38), wordsCounts.get(1).getCount());
+        assertEquals("and", wordsCounts.get(2).getWord());
+        assertEquals(Long.valueOf(38), wordsCounts.get(2).getCount());
     }
 }
