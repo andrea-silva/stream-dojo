@@ -13,12 +13,14 @@ import java.util.Comparator;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.function.IntFunction;
 import java.util.function.LongUnaryOperator;
+import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 
 import static java.util.stream.Collectors.toList;
 
-@SuppressWarnings("Convert2Lambda")
+@SuppressWarnings({"Convert2Lambda", "WeakerAccess"})
 class StreamDojo1 {
 
 
@@ -86,6 +88,38 @@ class StreamDojo1 {
         }
 
         return counts;
+    }
+
+    /**
+     * This exercise is a warm-up on java 8 numeric streams.
+     *
+     * Let's define a triplet sum as an array [a,b,c] where
+     *  a, b and c are integers with a value between 0 (inclusive) and 100 (inclusive)
+     *
+     *  and a <= b
+     *
+     *  and a + b = c
+     *
+     *  Find the number of distinct triplets that match the above definition.
+     *
+     *  You have to refactor the code below to use java streams.
+     *
+     *  Tip: consider using
+     *
+     * {@link IntStream#rangeClosed(int, int)} and {@link IntStream#mapToObj(IntFunction)}
+     *
+     */
+    public long findTheNumberOfTripletsSum() {
+        final List<int[]> triplets = new ArrayList<>();
+        for (int i = 0; i <= 50; i++) {
+            for (int j = i; j <= 100; j++) {
+                 if(i + j > 100) {
+                     break;
+                 }
+                 triplets.add(new int[]{i,j});
+            }
+        }
+        return triplets.size();
     }
 
 

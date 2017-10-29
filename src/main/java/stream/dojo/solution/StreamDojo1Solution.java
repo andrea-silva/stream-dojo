@@ -1,5 +1,6 @@
 package stream.dojo.solution;
 
+import stream.dojo.GaussianPair;
 import stream.dojo.Utils;
 import stream.dojo.WordCount;
 
@@ -45,7 +46,6 @@ public class StreamDojo1Solution {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-
     }
 
     public List<WordCount> findThreeMostFrequentWordsInDir(final String directoryPath) throws URISyntaxException {
@@ -69,6 +69,15 @@ public class StreamDojo1Solution {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public long findTheNumberOfTripletsSum() {
+        return IntStream.rangeClosed(0, 50)
+                .boxed()
+                .flatMap(a -> IntStream.rangeClosed(a, 100 - a)
+                        .mapToObj(b -> new int[]{a, b, a + b}))
+                .filter(x -> x[2] <= 100)
+                .count();
     }
 
     public List<Long> findTheFirstTwoSmallestTaxicabNumbers() {

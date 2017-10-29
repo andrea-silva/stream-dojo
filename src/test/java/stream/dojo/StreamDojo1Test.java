@@ -32,6 +32,13 @@ class StreamDojo1Test {
     }
 
     @Test
+    void shouldFindTheNumberOfTripletsSum() {
+        final long numberOfTripletsSum = streamDojo1.findTheNumberOfTripletsSum();
+
+        assertEquals(2601, numberOfTripletsSum);
+    }
+
+    @Test
     void shouldFindTheFirstTwoSmallestTaxicabNumbers() {
         final List<Long> taxicabNumbers = streamDojo1.findTheFirstTwoSmallestTaxicabNumbers();
 
