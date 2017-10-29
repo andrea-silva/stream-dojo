@@ -88,23 +88,6 @@ public class StreamDojo1Solution {
                 .collect(toList());
     }
 
-    public static void main(String[] args) {
-        LongStream.rangeClosed(1, 100)
-                .boxed()
-                .flatMap(a -> LongStream.rangeClosed(1, a)
-                        .boxed()
-                        .flatMap(b -> LongStream.rangeClosed(a, 100)
-                                .boxed()
-                                .flatMap(c -> LongStream.rangeClosed(1, c)
-                                        .mapToObj(d -> new long[]{a, b, c, d}))
-                        )
-                )
-                .filter(x -> x[0] != x[2])
-                .filter(x -> (long) (Math.pow(x[0], 3)) + (long) (Math.pow(x[1], 3)) == (long) (Math.pow(x[2], 3)) + (long) (Math.pow(x[3], 3)))
-                .limit(10)
-                .forEach(x -> System.out.printf("%d %d, %d %d %n", x[0], x[1], x[2], x[3]));
-    }
-
     private Stream<String> getLines(Stream<Path> paths) throws IOException {
         final List<String> lines = new ArrayList<>();
         for (Path path : paths.collect(Collectors.toSet())) {
@@ -114,7 +97,6 @@ public class StreamDojo1Solution {
     }
 
     /**
-     * my-morning-jacket_rocket-man.txt
      * Is it really safe to use this method inside a lambda?
      * You can sweep problems under the carpet, but sooner or later they'll come out to catch up with you.
      */
