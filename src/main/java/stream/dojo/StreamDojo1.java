@@ -104,7 +104,7 @@ class StreamDojo1 {
      *
      *  You have to refactor the code below to use java streams.
      *
-     *  Tip: consider using
+     *  Tip: consider using:
      *
      * {@link IntStream#rangeClosed(int, int)} and {@link IntStream#mapToObj(IntFunction)}
      *
@@ -124,7 +124,7 @@ class StreamDojo1 {
 
 
     /**
-     * A taxicab number of order N is an integer that can be expressed as a sum of two positive cube numbers in N distinct ways.
+     * A taxicab number of order N is an integer that can be expressed as the sum of two positive cube numbers in N distinct ways.
      * Usually, only the smallest of such numbers is considered a taxicab number. In this exercise we are going to relax this definition
      * and we will consider taxicab numbers of order 2 all the numbers that can be expressed as
      *
@@ -152,7 +152,7 @@ class StreamDojo1 {
      * {@link LongStream#range(long, long)} and/or {@link LongStream#iterate(long, LongUnaryOperator)}
      *
      */
-    public List<Long> findTheFirstTwoSmallestTaxicabNumbers() {
+    public List<Long> findTheFirstFiveSmallestTaxicabNumbers() {
         final List<Long> taxicabNumber = new ArrayList<>();
         for (long a = 1; ; a++) {
             final long a3 = (long) Math.pow(a, 3);
@@ -164,7 +164,7 @@ class StreamDojo1 {
                         final long d3 = (long) Math.pow(d, 3);
                         if (a3 + b3 == c3 + d3) {
                             taxicabNumber.add(a3 + b3);
-                            if (taxicabNumber.size() == 2) {
+                            if (taxicabNumber.size() == 5) {
                                 return taxicabNumber;
                             }
                         }

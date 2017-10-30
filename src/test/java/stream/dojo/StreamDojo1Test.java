@@ -40,12 +40,15 @@ class StreamDojo1Test {
 
     @Test
     void shouldFindTheFirstTwoSmallestTaxicabNumbers() {
-        final List<Long> taxicabNumbers = streamDojo1.findTheFirstTwoSmallestTaxicabNumbers();
+        final List<Long> taxicabNumbers = streamDojo1Solution.findTheFirstFiveSmallestTaxicabNumbers();
 
         assertNotNull(taxicabNumbers);
-        assertEquals(2, taxicabNumbers.size());
+        assertEquals(5, taxicabNumbers.size());
         assertEquals(Long.valueOf(1729), taxicabNumbers.get(0));
         assertEquals(Long.valueOf(4104), taxicabNumbers.get(1));
+        assertEquals(Long.valueOf(13832), taxicabNumbers.get(2));
+        assertEquals(Long.valueOf(20683), taxicabNumbers.get(3));
+        assertEquals(Long.valueOf(32832), taxicabNumbers.get(4));
 
     }
 }

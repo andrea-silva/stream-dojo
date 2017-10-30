@@ -80,7 +80,7 @@ public class StreamDojo1Solution {
                 .count();
     }
 
-    public List<Long> findTheFirstTwoSmallestTaxicabNumbers() {
+    public List<Long> findTheFirstFiveSmallestTaxicabNumbers() {
         return LongStream.iterate(1, n -> n + 1)
                 .boxed()
                 .flatMap(a -> LongStream.rangeClosed(1, a)
@@ -92,7 +92,7 @@ public class StreamDojo1Solution {
                         )
                 )
                 .filter(x -> x[4] - x[5] == 0)
-                .limit(2)
+                .limit(5)
                 .map(x -> x[4])
                 .collect(toList());
     }
