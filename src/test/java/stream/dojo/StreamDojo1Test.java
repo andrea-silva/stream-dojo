@@ -15,6 +15,20 @@ class StreamDojo1Test {
     private StreamDojo1Solution streamDojo1Solution = new StreamDojo1Solution();
 
     @Test
+    void shouldWordsCountByType() throws Exception {
+        final URI uri = ClassLoader.getSystemResource("numbersFile.txt").toURI();
+        final String mainPath = Paths.get(uri).toString();
+
+        final long[] wordsCounts = streamDojo1.findWordsCountByType(mainPath);
+
+        assertNotNull(wordsCounts);
+        assertEquals(3, wordsCounts.length);
+        assertEquals(3, wordsCounts[0]);
+        assertEquals(4, wordsCounts[1]);
+        assertEquals(4, wordsCounts[2]);
+    }
+
+    @Test
     void shouldFindThreeMostFrequentWords() throws Exception {
         final URI uri = ClassLoader.getSystemResource("files").toURI();
         final String mainPath = Paths.get(uri).toString();
@@ -40,7 +54,7 @@ class StreamDojo1Test {
 
     @Test
     void shouldFindTheFirstTwoSmallestTaxicabNumbers() {
-        final List<Long> taxicabNumbers = streamDojo1Solution.findTheFirstFiveSmallestTaxicabNumbers();
+        final List<Long> taxicabNumbers = streamDojo1.findTheFirstFiveSmallestTaxicabNumbers();
 
         assertNotNull(taxicabNumbers);
         assertEquals(5, taxicabNumbers.size());

@@ -23,6 +23,25 @@ import static java.util.stream.Collectors.*;
 
 public class StreamDojo1Solution {
 
+
+    public long[] findWordsCountByType(String filePath) {
+        final Path path = Paths.get(filePath);
+
+        try (final Stream<String> lines = Files.lines(path)) {
+            final Map<Boolean, Map<Boolean, Long>> partitions = lines.map(s -> s.split("\\s+"))
+                    .flatMap(Arrays::stream)
+                    .collect(partitioningBy(Utils::isDouble, partitioningBy(Utils::isInteger, counting())));
+            return new long[] {
+                    partitions.get(true).get(false),
+                    partitions.get(false).get(true),
+                    partitions.get(false).get(false),
+            };
+
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
     /**
      * Can you see the problem with this solution? Why is it not acceptable even if it makes the test pass?
      */
