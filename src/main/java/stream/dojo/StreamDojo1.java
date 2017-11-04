@@ -2,14 +2,11 @@ package stream.dojo;
 
 import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
-import java.io.InputStreamReader;
 import java.net.URISyntaxException;
 import java.nio.file.Files;
 import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
@@ -20,11 +17,6 @@ import java.util.function.IntFunction;
 import java.util.function.LongUnaryOperator;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
-import java.util.stream.Stream;
-
-import static java.util.stream.Collectors.counting;
-import static java.util.stream.Collectors.partitioningBy;
-import static java.util.stream.Collectors.toList;
 
 @SuppressWarnings({"Convert2Lambda", "WeakerAccess", "ForLoopReplaceableByForEach"})
 class StreamDojo1 {
@@ -78,16 +70,26 @@ class StreamDojo1 {
 
     /**
      * Given a directory containing only text files (only ASCII chars allowed) and no sub folder,
-     * find the 3 most frequent words and their count. In case of ties, favor
-     * words that comes last in alphabet order.
+     * find the 3 most frequent words and their count. The result has to be sorted by frequency desc
+     * and alphabetical order desc. So a possible result could be
+     *
+     * WordCount[word:"apple", "10"]
+     * WordCount[word:"strawberry", "5"]
+     * WordCount[word:"orange", "5"]
+     *
      * <p>
      * Words have to be sanitized using {@link Utils#sanitize(String)}
      * <p>
      * The clumsy imperative-style solution below, has to be refactored using Java 8 features
      * <p>
      * Tip: java.nio is more stream-friendly than java.io.
-     * Consider using {@link Files#list(Path)} and {@link Files#lines(Path)}, but be careful about not leaving file handles
-     * open in case of exception.
+     * Consider using:
+     * {@link Files#list(Path)} to list the content of a dir
+     * {@link Files#lines(Path)} to get the content of file line byline.
+     *
+     * Be careful about not leaving file handles open in case of exception.
+     *
+     *
      * <p>
      * Extra challenge: how about using parallel streams for this problem? Is it possible? Would it help?
      * <p>
@@ -189,7 +191,7 @@ class StreamDojo1 {
      * 1729 = = 9^3 + 10^3
      * <p>
      * Your mission, should you choose to accept it, is to refactor the following code
-     * to find the 2 smallest taxicab numbers of order 2 using java 8 numeric streams.
+     * to find the 5 smallest taxicab numbers of order 2 using java 8 numeric streams.
      * <p>
      * This is a tough one!
      * <p>

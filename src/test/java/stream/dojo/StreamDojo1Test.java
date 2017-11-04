@@ -53,7 +53,7 @@ class StreamDojo1Test {
     }
 
     @Test
-    void shouldFindTheFirstTwoSmallestTaxicabNumbers() {
+    void shouldFindTheFirstFiveSmallestTaxicabNumbers() {
         final List<Long> taxicabNumbers = streamDojo1.findTheFirstFiveSmallestTaxicabNumbers();
 
         assertNotNull(taxicabNumbers);

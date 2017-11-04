@@ -1,6 +1,5 @@
 package stream.dojo.solution;
 
-import stream.dojo.GaussianPair;
 import stream.dojo.Utils;
 import stream.dojo.WordCount;
 
@@ -13,12 +12,12 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 import java.util.stream.LongStream;
 import java.util.stream.Stream;
 
+import static java.util.function.Function.identity;
 import static java.util.stream.Collectors.*;
 
 public class StreamDojo1Solution {
@@ -54,7 +53,7 @@ public class StreamDojo1Solution {
                     .map(s -> s.split("\\s+"))
                     .flatMap(Arrays::stream)
                     .map(Utils::sanitize)
-                    .collect(groupingBy(Function.identity(), counting()))
+                    .collect(groupingBy(identity(), counting()))
                     .entrySet()
                     .stream()
                     .sorted(Map.Entry.<String, Long>comparingByValue().reversed().thenComparing(Map.Entry.<String, Long>comparingByKey().reversed()))
@@ -77,7 +76,7 @@ public class StreamDojo1Solution {
                     .map(s -> s.split("\\s+"))
                     .flatMap(Arrays::stream)
                     .map(Utils::sanitize)
-                    .collect(groupingBy(Function.identity(), counting()))
+                    .collect(groupingBy(identity(), counting()))
                     .entrySet()
                     .stream()
                     .sorted(Map.Entry.<String, Long>comparingByValue().reversed().thenComparing(Map.Entry.<String, Long>comparingByKey().reversed()))
@@ -95,7 +94,6 @@ public class StreamDojo1Solution {
                 .boxed()
                 .flatMap(a -> IntStream.rangeClosed(a, 100 - a)
                         .mapToObj(b -> new int[]{a, b, a + b}))
-                .filter(x -> x[2] <= 100)
                 .count();
     }
 
